@@ -33,11 +33,8 @@ while($row = mysql_fetch_array($result))
 {
 	echo "<tr>";
    	echo "<td>";
-	echo $row['user'];
+	echo $row['email'];
     echo "</td>";
-    echo "<td>";
-    echo $row['type'];
-  	echo "</td>";
 	echo "<td>";
    	echo "<a href=\"edit_customer.php?id=".$row['id']."\">Edit</a>"; 
 	echo "</td>";
