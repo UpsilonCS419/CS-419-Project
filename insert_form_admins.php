@@ -12,6 +12,9 @@
 <h1>Epsilon Employee Recognition</h1>
 <nav id="nav01"></nav>
 <div id="main">
+
+<a href="url" class="logoutLblPos">sign out</a>
+
 <h2>Create new admin account:</h2>
 
 <form action="" method="post">
@@ -25,7 +28,7 @@
 </p>
 
 <p>
-    <label for="password">Confinrm Password:</label>
+    <label for="password">Confirm Password:</label>
     <input type="text" name="password" id="password">
 </p>
 

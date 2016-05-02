@@ -14,6 +14,7 @@
 
 <div id="main">
 
+  <a href="url" class="logoutLblPos">sign out</a>
 
 <?PHP
 include("mysqlconnect.php");
@@ -22,11 +23,10 @@ db_connect();
 error_reporting(E_ALL);
 $result = mysql_query("SELECT * FROM admin");
 
-echo "<h2>Admins</h2>";
+echo "<h2>Administrators </h2>";
 echo "<table>";
 echo "<tr>";
-  echo "<th>user</th>";
-  echo "<th>type</th>";
+  echo "<th>Admin Account</th>";
 
 echo "</tr>";
 while($row = mysql_fetch_array($result))

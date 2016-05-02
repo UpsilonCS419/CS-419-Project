@@ -16,10 +16,17 @@ body {
 button {
   color: #900;
   font-weight: bold;
-  font-size: 150%;
+  font-size: 130%;
   text-transform: uppercase;
 }
 
+.logoutLblPos{
+
+   position:fixed;
+   right:10px;
+   top:5px;
+   font-size:120%;	
+}
 
 h1 {
     font-family: Georgia, serif;

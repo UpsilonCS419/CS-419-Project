@@ -13,7 +13,7 @@
 <nav id="nav01"></nav>
 
 <div id="main">
-
+<a href="url" class="logoutLblPos">sign out</a>
 
 <?PHP
 include("mysqlconnect.php");
