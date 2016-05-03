@@ -17,23 +17,24 @@
 
 <h2>Create new admin account:</h2>
 
-<form action="" method="post">
+<form action="insert_admins.php" method="post">
 <p>
     <label for="user">User(e-mail):</label>
-    <input type="text" name="user" id="user">
+    <input type="text" name="user" id="user" required>
 </p>
 <p>
     <label for="password">Password:</label>
-    <input type="text" name="password" id="password">
+    <input type="password" name="password" id="password" required>
 </p>
 
 <p>
     <label for="password">Confirm Password:</label>
-    <input type="text" name="password" id="password">
+    <input type="password" name="confirmpassword" id="confirmpassword"
+required>
 </p>
 
 
-<input type="submit" value="Submit">
+<input type="submit" value="Submit" class="submit">
 </form>
 
 </div>

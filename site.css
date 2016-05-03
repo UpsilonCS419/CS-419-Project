@@ -28,6 +28,13 @@ button {
    font-size:120%;	
 }
 
+.submit{
+    font-family: Georgia, serif;
+    color: #ffffff;
+    font-size: 30px;
+    color: #696969;
+}
+
 h1 {
     font-family: Georgia, serif;
     color: #ffffff;

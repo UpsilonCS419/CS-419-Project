@@ -9,7 +9,7 @@
 
 <body>
 
-<h1>Eposilon Employee Recognition</h1>
+<h1>Epsilon Employee Recognition</h1>
 <nav id="nav01"></nav>
 
 <div id="main">
@@ -55,7 +55,7 @@ echo "</table>";
 ?>
 
 <form name="addCustomer" action="">            
-            <input type="submit" value="Add	User">
+            <input type="submit" value="Add	User" class="submit">
         </form>
 
 </div>
