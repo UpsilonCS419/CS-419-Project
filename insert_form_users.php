@@ -15,9 +15,9 @@
 
 <a href="url" class="logoutLblPos">sign out</a>
 
-<h2>Create New Admin Account:</h2>
+<h2>Create New User Account:</h2>
 
-<form action="insert_admins.php" method="post">
+<form action="insert_user.php" method="post">
 <p>
     <label for="user">User(e-mail):</label>
     <input type="text" name="user" id="user" required>
@@ -33,6 +33,19 @@
 required>
 </p>
 
+
+<p>
+    <label for="fname">First Name:</label>
+    <input type="fname" name="fname" id="fname"
+required>
+</p>
+
+
+<p>
+    <label for="lname">Last Name:</label>
+    <input type="lname" name="lname" id="lname"
+required>
+</p>
 
 <input type="submit" value="Submit" class="submit">
 </form>
