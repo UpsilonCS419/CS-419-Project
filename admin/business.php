@@ -2,14 +2,14 @@
 <html>
 
 <head>
-  <title>Epsilon Employee Recognition</title>
+  <title>Upsilon Employee Recognition</title>
   <meta charset="UTF-8">
   <link href="site.css" rel="stylesheet">
 </head>
 
 <body>
 
-<h1>Epsilon Employee Recognition</h1>
+<h1>Upsilon Employee Recognition</h1>
 <nav id="nav01"></nav>
 
 <div id="main">

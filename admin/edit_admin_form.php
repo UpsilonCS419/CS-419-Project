@@ -9,7 +9,7 @@
 
 <body>
 
-<h1>Epsilon Employee Recognition</h1>
+<h1>Upsilon Employee Recognition</h1>
 <nav id="nav01"></nav>
 <div id="main">
 <a href="url" class="logoutLblPos">sign out</a>
