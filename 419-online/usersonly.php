@@ -77,7 +77,12 @@ while($row = mysql_fetch_array($result))
     echo $row['date_stamp'];
   	echo "</td>";
     echo "<td>";
-    echo "<img src='getsignature.php?emailname=".$sessname."' width='100' height='100' />";
+    if($row['signature']==NULL){
+		echo "No Signature Yet.";
+	}
+	else{
+		echo "<img src='getsignature.php?emailname=".$sessname."' width='100' height='100' />";
+	}
     echo "</td>";
     echo "<td>";
    	echo "<a href=\"edit_user_form_only.php?id=".$row['id']."\">Edit</a>"; 

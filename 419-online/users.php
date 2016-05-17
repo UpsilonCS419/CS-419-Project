@@ -23,7 +23,7 @@ if(!$_SESSION["id"]){
 
 $sessid=$_SESSION['id'];
 
-$results = mysql_query("SELECT * FROM user WHERE id='$sessid'");
+$results = mysql_query("SELECT * FROM admin WHERE id='$sessid'");
 $rows = mysql_fetch_array($results);
 $sessname = $rows['email'];
 
@@ -77,7 +77,13 @@ while($row = mysql_fetch_array($result))
     echo $row['date_stamp'];
   	echo "</td>";
     echo "<td>";
-    echo "<img src='getsignature.php?emailname=".$sessname."' width='100' height='100' />";
+	if($row['signature']==NULL){
+		echo "No Signature Yet.";
+	}
+	else{
+		echo "<img src='getsignature.php?emailname=".$sessname."' width='100' height='100' />";
+	}
+    
     echo "</td>";
     echo "<td>";
    	echo "<a href=\"edit_user_form.php?id=".$row['id']."\">Edit</a>"; 
