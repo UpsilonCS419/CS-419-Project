@@ -59,6 +59,8 @@ echo "<tr>";
   echo "<th>First Name</th>";
   echo "<th>Last Name</th>";
   echo "<th>Date Account Created</th>";
+  echo "<th>Signature Stamp</th>";
+  echo "<th>Edit</th>";
 
 echo "</tr>";
 while($row = mysql_fetch_array($result))
@@ -85,11 +87,8 @@ while($row = mysql_fetch_array($result))
 	}
     echo "</td>";
     echo "<td>";
-   	echo "<a href=\"edit_user_form_only.php?id=".$row['id']."\">Edit</a>"; 
+   	echo "<a href=\"edit_user_form_only.php?id=".$row['id']."\">Edit Your Account</a>"; 
 	echo "</td>";
-   	echo "<td>";
-   	echo "<a href=\"delete_users_only.php?id=".$row['id']."\">Delete Your Account</a>"; 
-   	echo "</td>";
   	echo "</tr>";
 }
 echo "</table>";
