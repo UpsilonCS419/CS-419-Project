@@ -62,12 +62,22 @@ $sessid=$_SESSION['id'];
       Last Name: <input type="text" name="lastname" required><br/>
       Email:  <input type="text" name="email" required><br/>
       Type of Award:<input type="radio" name="typeaward" value="monthly" id="monthly">Employee of the Month
-      <input type="radio" name="typeaward" value="weekly" id="weekly" required>Employee of the Week<br/>
+      <input type="radio" name="typeaward" value="yearly" id="yearly" required>Employee of the Year<br/>
       Date of Award<input name="awarddate" id="datepicker" required><br/>
       Time of Award<input type="time" name="awardtime" id="awardtime" required><br/><br/>
 
-      <input type="submit" name="create" class="btn btn-primary btn-lg active" value="Create Account"><br/>
+      <input type="submit" name="create" class="btn btn-primary btn-lg active" value="Create Award"><br/>
     </form>
+
+<form method = "POST" action = "./EmailCertificate/latex.php" target="_blank">
+	
+	<input type="submit" name="submitReq" class="btn btn-primary btn-lg active" value="Create Certificate"><br/>
+</form>	
+	
+<form method = "POST" action = "./EmailCertificate/mail.php" target="_blank">
+	
+	<input type="submit" name="email" class="btn btn-primary btn-lg active" value="Send Email"><br/>
+</form>
 
 
 
@@ -100,7 +110,7 @@ if(isset($_POST['create'])){
       $time = date('H:i:s', strtotime($rawtime));
 
       if($type=="monthly"){
-
+		
         $AddQuery = $con->prepare ("INSERT INTO award (uid, tid, fname, lname, email, date_award, time_award) VALUES ('$sessids', 1, '$_POST[firstname]','$_POST[lastname]','$_POST[email]','$date','$time')");
         
       }
@@ -109,6 +119,7 @@ if(isset($_POST['create'])){
       }
 
       $AddQuery->execute();
+	  $_SESSION['awardeeId'] = $AddQuery->insert_id;
       $AddQuery->close();
     
 
@@ -152,7 +163,7 @@ $read2 = "SELECT * FROM award WHERE uid = '$_SESSION[id]'";
 				echo "<tr><td>".$rows1['fname']."</td>";
 				echo "<td>".$rows1['lname']."</td>";
 				echo "<td>".$rows1['email']."</td>";
-				echo "<td>Emp of Week</td>";
+				echo "<td>Emp of Year</td>";
 				$phpdate = strtotime($rows1['date_award']);
 				$myformat = date("m/d/y", $phpdate);
 				echo "<td>".$myformat."</td>";
