@@ -38,22 +38,72 @@ error_reporting(E_ALL);
 				echo "['".$row['awardType']."',".$row['count']."],";	
 			}	
 			?>	
-			
 
 		]);
+
+		var data1=new google.visualization.arrayToDataTable([
+		['Date', 'Number of user accounts created'],	
+					
+		  <?php
+				
+			$result = mysql_query("SELECT date_stamp,count(date_stamp)AS count FROM user group by date_stamp");
+			while($row=mysql_fetch_assoc($result))
+			{
+				echo "['".$row['date_stamp']."',".$row['count']."],";	
+			}	
+			?>	
+		]);
+
+		var data2=new google.visualization.arrayToDataTable([
+		['Date', 'Number of user accounts created'],	
+					
+		  <?php
+				
+			$result = mysql_query("SELECT date_award,count(date_award) AS count FROM award GROUP BY date_award");
+			while($row=mysql_fetch_assoc($result))
+			{
+				echo "['".$row['date_award']."',".$row['count']."],";	
+			}	
+			?>	
+		]);
+
+
+
+
    		var options = {
-       		title: 'Number of awards per type',
-       		chartArea: {width: '50%'},
-       		hAxis: {
+       		title: 'Percentage of awards created by award type',
+       		//chartArea: {width: '60%'},
+       		is3D: true, 
+        	colors: ['#1b9e77', '#d95f02', '#7570b3'], 
+			hAxis: {
          	title: 'Number of awards',
         	minValue: 0
-        	},
+			},
       	};
 
 
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+		var options1 = {
+        title: "Number of user acount created per day",
+        colors: ['#1b9e77', '#d95f02', '#7570b3'], 
+		legend: { position: "none" },
+      };	
+
+		var options2 = {
+        title: "Number of awards per day",
+        colors: ['#1b9e77', '#d95f02', '#7570b3'], 
+		legend: { position: "none" },
+      };	
+        // Instantiate and draw charts.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
+		
+        var chart1 = new google.visualization.ColumnChart(document.getElementById('chart_div1'));
+        chart1.draw(data1, options1);
+	
+        var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+        chart2.draw(data2, options2);
+
+	
       }
     </script>
 </head>
@@ -67,7 +117,10 @@ error_reporting(E_ALL);
   <a href="url" class="logoutLblPos">sign out</a>
 
 
-<div id="chart_div"/>
+<div id="chart_div" style="width: 900px; height: 500px;"></div>
+<div id="chart_div1" style="width: 1000px; height: 500px;"></div>
+<div id="chart_div2" style="width: 1000px; height: 500px;"></div>
+
 <script src="script.js"></script>
 
 </body>
