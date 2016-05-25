@@ -20,12 +20,13 @@ if(isset($_SESSION['awardeeId'])) {
 $userId = $_SESSION['id'];
 
 //echo $awardeeEmail;
-//query the awardee's name, email and award type
+//query the awardee's name, email, date, and award type
 $fname = NULL;
 $lname = NULL;
 $awardTid = NULL;
 $emailAddr = NULL;
-if (!($stmt = $mysqli->prepare("SELECT tid, fname, lname, email FROM award WHERE id=?"))) {
+$awardDate = NULL;
+if (!($stmt = $mysqli->prepare("SELECT tid, fname, lname, email, date_award FROM award WHERE id=?"))) {
 		echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 	}
 
@@ -36,7 +37,7 @@ if (!($stmt->bind_param("i", $awardeeId))) {
 if (!($stmt->execute())) {
 		echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 	}
-if (!$stmt->bind_result($awardTid, $fname, $lname, $emailAddr)) {
+if (!$stmt->bind_result($awardTid, $fname, $lname, $emailAddr, $awardDate)) {
 		echo "Binding output parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 	}
 	$stmt->fetch();
@@ -97,8 +98,9 @@ $userlname = NULL;
  $outPutData = file_get_contents($tempFile);
  $awardee = $fname . ' ' . $lname;
  $username = $userfname . ' ' . $userlname;
-
- $tans = array("@@employeeName@@" => $awardee, "@@userName@@" => $username);
+ $phpdate = strtotime($awardDate);
+ $date = date("m-d-y", $phpdate);
+ $tans = array("@@employeeName@@" => $awardee, "@@userName@@" => $username, "@@date@@" => $date);
  $newout = strtr($outPutData, $tans);
 
  $newFileName = "./pdfTemp/". $lname . "ctf.tex";

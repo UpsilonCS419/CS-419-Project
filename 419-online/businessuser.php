@@ -76,7 +76,7 @@ $sessid=$_SESSION['id'];
 	
 <form method = "POST" action = "./EmailCertificate/mail.php" target="_blank">
 	
-	<input type="submit" name="email" class="btn btn-primary btn-lg active" value="Send Email"><br/>
+	<input type="submit" name="email" class="btn btn-primary btn-lg active" value="Send Certificate"><br/>
 </form>
 
 
