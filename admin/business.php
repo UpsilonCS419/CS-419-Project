@@ -67,9 +67,6 @@ error_reporting(E_ALL);
 			?>	
 		]);
 
-
-
-
    		var options = {
        		title: 'Percentage of awards created by award type',
        		//chartArea: {width: '60%'},
@@ -81,7 +78,6 @@ error_reporting(E_ALL);
 			},
       	};
 
-
 		var options1 = {
         title: "Number of user acount created per day",
         colors: ['#1b9e77', '#d95f02', '#7570b3'], 
@@ -90,9 +86,9 @@ error_reporting(E_ALL);
 
 		var options2 = {
         title: "Number of awards per day",
-        colors: ['#1b9e77', '#d95f02', '#7570b3'], 
+        colors: ['#d95f02', '#7570b3'], 
 		legend: { position: "none" },
-      };	
+	};	
         // Instantiate and draw charts.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
