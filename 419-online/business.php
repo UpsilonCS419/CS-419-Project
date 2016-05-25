@@ -249,7 +249,7 @@ $atitle = NULL;
 
 $CatStmt->bind_result($awardid, $afname, $alname, $aemail, $adate, $atime, $uemail, $ufname, $ulname, $usignature, $atitle);
 echo "<div class='row'>";
-	echo '<h1>Award List</h1><table class="table table-bordered table-hover table-striped">';
+	echo '<h2>Award List</h2><table class="table table-bordered table-hover table-striped">';
 	echo '<th>First Name awarded  </th><th>Last Awarded  </th><th>Type Awarded  </th><th>Email Awarded  </th><th>Date Awarded  </th><th>Email of User  </th><th>First Name User  </th><th>last Name User  </th>';
 	while($CatStmt->fetch()){
 			
