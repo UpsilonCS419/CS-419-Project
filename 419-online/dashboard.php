@@ -1,9 +1,34 @@
+<?php
 
-<?PHP
+session_start();
+
+$sesstype=$_SESSION['type'];
+$check = 'user';
+include("checktypeadmin.php");
+
 include("mysqlconnect.php");
 db_connect();
+
 error_reporting(E_ALL);
+
+if(!$_SESSION["id"]){
+  echo "You are not logged in!";
+  header("location: login.php");
+  echo '<br/>Please <a href="login.php" class="btn btn-primary btn-lg active" role="button">Login</a>';
+  die();
+}
+
+
+
+
+$sessid=$_SESSION['id'];
+
+$results = mysql_query("SELECT * FROM admin WHERE id='$sessid'");
+$rows = mysql_fetch_array($results);
+$sessname = $rows['email'];
+
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +36,17 @@ error_reporting(E_ALL);
 <head>
  <title>Upsilon Employee Recognition</title>
  <meta charset="UTF-8">
- <link href="site.css" rel="stylesheet">
+ 	
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+ 
+<!-- Include Date Range Picker -->
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+  <link href="site.css" rel="stylesheet">
+
+<link href="site.css" rel="stylesheet">
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -54,6 +89,7 @@ error_reporting(E_ALL);
 			?>	
 		]);
 
+				
 		var data2=new google.visualization.arrayToDataTable([
 		['Date', 'Number of user accounts created'],	
 					
@@ -103,21 +139,21 @@ error_reporting(E_ALL);
       }
     </script>
 </head>
+
 <body>
 
-<h1>Upsilon Employee Recognition</h1>
+<h1>Upsilon Employee Recognition: <?php echo $sessname; ?></h1>
 <nav id="nav01"></nav>
 
 <div id="main">
-
-  <a href="url" class="logoutLblPos">sign out</a>
-
+<a href="logout.php" class="logoutLblPos">sign out</a>
 
 <div id="chart_div" style="width: 900px; height: 500px;"></div>
 <div id="chart_div1" style="width: 1000px; height: 500px;"></div>
 <div id="chart_div2" style="width: 1000px; height: 500px;"></div>
 
-<script src="script.js"></script>
-
 </body>
 </html>
+<script src="script.js"></script>
+
+

@@ -36,8 +36,15 @@ $sessname = $rows['email'];
 <head>
   <title>Upsilon Employee Recognition</title>
   <meta charset="UTF-8">
-  <link href="site.css" rel="stylesheet">
-
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+ 
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+  
+ <link href="site.css" rel="stylesheet">
 </head>
 
 <body>
@@ -53,7 +60,7 @@ $sessname = $rows['email'];
 $result = mysql_query("SELECT * FROM user");
 
 echo "<h2>User Accounts</h2>";
-echo "<table>";
+echo "<table class='table table-bordered table-hover table-striped' >";
 echo "<tr>";
   echo "<th>User</th>";
   echo "<th>First Name</th>";
@@ -76,17 +83,18 @@ while($row = mysql_fetch_array($result))
   	echo "<td>";
     echo $row['date_stamp'];
   	echo "</td>";
-    echo "<td>";
+   /* echo "<td>";
+	 Commented out by lozadas
 	if($row['signature']==NULL){
 		echo "No Signature Yet.";
 	}
 	else{
 		echo "<img src='getsignature.php?emailname=".$sessname."' width='100' height='100' />";
 	}
-    
     echo "</td>";
-    echo "<td>";
-   	echo "<a href=\"edit_user_form.php?id=".$row['id']."\">Edit</a>"; 
+    */
+	echo "<td>";
+	echo "<a href=\"edit_user_form.php?id=".$row['id']."\">Edit</a>"; 
 	echo "</td>";
    	echo "<td>";
    	echo "<a href=\"delete_users.php?id=".$row['id']."\">Delete</a>"; 
