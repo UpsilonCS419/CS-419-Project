@@ -8,17 +8,11 @@ $mysqli = new mysqli("oniddb.cws.oregonstate.edu", "lozadas-db", "ZM18X2OT5DBHUv
 if ($mysqli->connect_errno) {
 	echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 } 
-if(isset($_POST['viewAward'])) {
-	$awardeeId = $_POST['viewAward'];
-	//unset($_SESSION['awardeeId']);
-	//$_SESSION['awardeeId2'] = $awardeeId; //pass to email sending page 
-} 
-/*
-else if($_SESSION['awardeeId']!=NULL){
+if(isset($_SESSION['awardeeId'])) {
 	$awardeeId = $_SESSION['awardeeId'];
-}
-*/
-else {
+	unset($_SESSION['awardeeId']);
+	$_SESSION['awardeeId2'] = $awardeeId; //pass to email sending page 
+} else {
 	echo "Award is not created";
 	exit();
 }

@@ -10,61 +10,46 @@ if ($mysqli->connect_errno) {
 	echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 } 
 
-if(isset($_POST['sendAward'])) {
-	$awardeeId = $_POST['sendAward'];
-	//unset($_SESSION['awardeeId2']);
-} 
-/*
-else if(isset($_SESSION['awardeeId'])){
-	$awardeeId = $_SESSION['awardeeId'];
-	//unset($_SESSION['awardeeId']);
-}
-*/
-else {
+if(isset($_SESSION['awardeeId2'])) {
+//	$awardeeId = $_SESSION['awardeeId2'];
+	unset($_SESSION['awardeeId2']);
+} else {
 	echo "No certificate to send";
 	exit();
 }
 
-$read2 = "SELECT * FROM award WHERE id = '$awardeeId'";        
-$favorites = $mysqli->query($read2);
-$rows1=$favorites->fetch_assoc();
+$names = explode(" ", file_get_contents('names.txt'));
 
-//$names = explode(" ", file_get_contents('names.txt'));
+$emailAddr = $names[5];
 
-$emailAddr = $rows1['email'];
-
-if ($rows1['tid'] == 2) {
+if ($names[4] == "YearAward") {
 	$htmlTemp = 'emailTemplate.html';
 	$emailSubject = 'Employee of Year Award';
-} else if ($rows1['tid'] == 1) {
+} else if ($names[4] == "MonthAward") {
 	$htmlTemp = 'emailTemplate1.html';
 	$emailSubject = 'Employee of Month Award';
 } else {
 	echo "error on award type";
 	exit();
 }
-$sessid = $_SESSION['id'];
-$read3 = "SELECT * FROM user WHERE id = '$sessid'";        
-$favorites1 = $mysqli->query($read3);
-$rows2=$favorites1->fetch_assoc();
 
 $tempFile = './Templates/' . $htmlTemp;
 $bodytext = file_get_contents($tempFile); //get email template
 
-$awardee = $rows1['fname'] . ' ' . $rows1['lname'];
-$user =  $rows2['fname'] . ' ' . $rows2['lname'];
+$awardee = $names[0] . ' ' . $names[1];
+$user =  $names[2] . ' ' . $names[3];
 $trans = array("@@fullName@@" => $awardee, "@@userFullName@@" => $user);
 $body = strtr($bodytext, $trans);
 
 $email = new PHPMailer();
-$email->From      = 'hengs@oregonstate.edu';
+$email->From      = 'wangxis@oregonstate.edu';
 $email->FromName  = $user;
 $email->Subject   = $emailSubject;
 $email->Body      = $body;
 $email->AddAddress($emailAddr);
 
-//$names = explode(" ", file_get_contents('names.txt'));
-$pdfFile = $rows1['lname'] . 'ctf.pdf';
+$names = explode(" ", file_get_contents('names.txt'));
+$pdfFile = $names[1] . 'ctf.pdf';
 
 $file_to_attach = './pdfTemp/' . $pdfFile;;
 
