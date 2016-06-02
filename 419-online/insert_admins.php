@@ -12,7 +12,6 @@
 <div id="main">
 <h1>Inserting Records:</h1>
 
-
 <?PHP
 include("mysqlconnect.php");
 db_connect();
@@ -42,8 +41,6 @@ else
 	echo "<a href='insert_form_admins.php'>Return</a>";	
 	echo "</p>";
 }
-
-
 ?>
 
 </div>
