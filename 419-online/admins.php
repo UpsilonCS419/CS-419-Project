@@ -1,3 +1,31 @@
+<?php
+
+session_start();
+
+$sesstype=$_SESSION['type'];
+$check = 'user';
+include("checktypeadmin.php");
+
+include("mysqlconnect.php");
+db_connect();
+
+error_reporting(E_ALL);
+
+if(!$_SESSION["id"]){
+  echo "You are not logged in!";
+  header("location: login.php");
+  echo '<br/>Please <a href="login.php" class="btn btn-primary btn-lg active" role="button">Login</a>';
+  die();
+}
+
+$sessid=$_SESSION['id'];
+
+$results = mysql_query("SELECT * FROM admin WHERE id='$sessid'");
+$rows = mysql_fetch_array($results);
+$sessname = $rows['email'];
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -21,11 +49,11 @@
 
 <div id="main">
 
-  <a href="url" class="logoutLblPos">sign out</a>
+  <a href="logout.php" class="logoutLblPos">sign out</a>
 
 <?PHP
-include("mysqlconnect.php");
-db_connect();
+//include("mysqlconnect.php");
+//db_connect();
 
 error_reporting(E_ALL);
 $result = mysql_query("SELECT * FROM admin");

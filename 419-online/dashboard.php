@@ -115,13 +115,13 @@ $sessname = $rows['email'];
       	};
 
 		var options1 = {
-        title: "Number of user acount created per day",
+        title: "Number of user account created per day",
         colors: ['#1b9e77', '#d95f02', '#7570b3'], 
 		legend: { position: "none" },
       };	
 
 		var options2 = {
-        title: "Number of awards per day",
+        title: "Number of awards generated per day",
         colors: ['#d95f02', '#7570b3'], 
 		legend: { position: "none" },
 	};	
@@ -142,7 +142,7 @@ $sessname = $rows['email'];
 
 <body>
 
-<h1>Upsilon Employee Recognition: <?php echo $sessname; ?></h1>
+<h1>Upsilon Employee Recognition</h1>
 <nav id="nav01"></nav>
 
 <div id="main">

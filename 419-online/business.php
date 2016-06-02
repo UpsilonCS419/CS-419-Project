@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 $sesstype=$_SESSION['type'];
@@ -115,6 +114,10 @@ $(function() {
 
 
 <?PHP
+
+//header('Content-Type: text/csv; charset=utf-8');
+//header('Content-Disposition: attachment; filename=data.csv');
+
 
 if(isset($_POST['filtering'])){
 	

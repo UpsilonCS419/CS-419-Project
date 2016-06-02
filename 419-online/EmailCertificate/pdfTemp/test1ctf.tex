@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[landscape]{geometry}
+\usepackage{xcolor}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+% \usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{eso-pic}
+\newcommand\BackgroundPic{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight]{bg8.jpg}%
+\vfill
+}}}
+\begin{document}
+\AddToShipoutPicture*{\BackgroundPic}
+\begin{titlepage}
+	\centering
+	\vspace*{2cm}
+	%\includegraphics[width=0.4\textwidth]{bg5.jpg}\par\vspace{1cm}
+	{\scshape\Huge\bfseries\color{blue} Employee of the Year Award \par}
+	\line(1,0){350}\\
+	\vspace{1cm}
+	{\LARGE This certificate is awarded to \par}
+	\vspace{0.5cm}
+	{\huge\bfseries test1 test1\par}
+	\vspace{0.5cm}
+	{\Large In Recognition and Appreciation Your Excellent Performance \par} 
+	{\Large for the Year 2016 \par}
+	\vspace*{1.5cm}
+	\begin{multicols}{2}
+	
+	\vspace*{0.4cm}
+	\large test test\\
+	\vspace*{-0.2cm}
+	\line(1,0){100}\\
+	{\Large\itshape Supervisor }\\
+	
+	\includegraphics[scale=0.8]{sig.jpg}\\
+	\vspace*{-0.5cm}
+	\line(1,0){100}\\
+	{\Large\itshape Signature}
+	\end{multicols}
+	
+	\vspace*{0.5cm}
+% Bottom of the page
+	{\large 05-18-16\par}
+\end{titlepage}
+\end{document}
