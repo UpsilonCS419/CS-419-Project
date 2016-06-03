@@ -34,6 +34,9 @@ $sessid=$_SESSION['id'];?>
   $(document).ready(function() {
     $("#datepicker").datepicker();
   });
+  function redirect() {
+	  window.open("./EmailCertificate/latex.php");
+  }
   </script>
 
 </head>
@@ -51,7 +54,7 @@ $sessid=$_SESSION['id'];?>
 <h2>Create Award</h2>
 
 
-<form method = "POST" action="">
+<form method = "POST" action="" onsubmit="return redirect()">
     
       First Name: <input type="text" name="firstname" required><br/>
       Last Name: <input type="text" name="lastname" required><br/>
