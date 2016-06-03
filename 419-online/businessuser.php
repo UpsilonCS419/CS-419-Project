@@ -67,14 +67,6 @@ $sessid=$_SESSION['id'];?>
       <input type="submit" name="create" class="btn btn-primary btn-lg active" value="Create Award"><br/>
     </form>
 
-<form method = "POST" action = "./EmailCertificate/mail.php" target="_blank">
-	
-	<input type="submit" name="email" class="btn btn-primary btn-lg active" value="Send Email"><br/>
-</form>
-
-
-
-
 <script src="script1.js"></script>
 
 <hr/>
@@ -174,7 +166,6 @@ $read2 = "SELECT * FROM award WHERE uid = '$_SESSION[id]'";
 			echo "No awards created.";
 		}
 		
-		unset($_SESSION['awardeeId']);
 		
 		?>
 		
