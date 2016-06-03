@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 $sesstype=$_SESSION['type'];
@@ -19,11 +18,7 @@ if(!$_SESSION["id"]){
 }
 
 
-$sessid=$_SESSION['id'];
-
-?>
-
-
+$sessid=$_SESSION['id'];?>
 <!DOCTYPE html>
 <html>
 
@@ -39,9 +34,6 @@ $sessid=$_SESSION['id'];
   $(document).ready(function() {
     $("#datepicker").datepicker();
   });
-  function redirect() {
-	  window.open("./EmailCertificate/latex.php");
-  }
   </script>
 
 </head>
@@ -59,7 +51,7 @@ $sessid=$_SESSION['id'];
 <h2>Create Award</h2>
 
 
-<form method = "POST" action="" onsubmit="return redirect()">
+<form method = "POST" action="">
     
       First Name: <input type="text" name="firstname" required><br/>
       Last Name: <input type="text" name="lastname" required><br/>
@@ -72,11 +64,9 @@ $sessid=$_SESSION['id'];
       <input type="submit" name="create" class="btn btn-primary btn-lg active" value="Create Award"><br/>
     </form>
 
-	
-	
 <form method = "POST" action = "./EmailCertificate/mail.php" target="_blank">
 	
-	<input type="submit" name="email" class="btn btn-primary btn-lg active" value="Send Certificate"><br/>
+	<input type="submit" name="email" class="btn btn-primary btn-lg active" value="Send Email"><br/>
 </form>
 
 
@@ -86,9 +76,7 @@ $sessid=$_SESSION['id'];
 
 <hr/>
 <h2>Award Given List</h2>
-
 <?php
-
 if(isset($_POST['deletefav'])) {
 	$DeleteQuery1 = $con->prepare("DELETE FROM award WHERE id = '$_POST[deletefav]'");
 	$DeleteQuery1->execute();
@@ -120,21 +108,19 @@ if(isset($_POST['create'])){
 
       $AddQuery->execute();
 	  $_SESSION['awardeeId'] = $AddQuery->insert_id;
+	  $awardeeId = $AddQuery->insert_id;
       $AddQuery->close();
-	  
+	  //$link = "<script>window.open('https://web.engr.oregonstate.edu/~hengs/wiki/docs/cs419test/EmailCertificate/latex.php')</script>";
+
+	//echo $link;
+	//echo $_SESSION['awardeeId'];
+    };
 	
-}
-
-
-   
-
-    
-
-
 ?>
 
-<?php
 
+<?php	
+	
 $read2 = "SELECT * FROM award WHERE uid = '$_SESSION[id]'";        
 		$favorites = $con->query($read2);
 		if($favorites->num_rows>0){
@@ -144,6 +130,8 @@ $read2 = "SELECT * FROM award WHERE uid = '$_SESSION[id]'";
 			echo '<th>Email</th>';
 			echo '<th>Type of Award</th>';
 			echo '<th>Date of Award</th>';
+			echo '<th>Preview Award</th>';
+			echo '<th>Send Award</th>';
 			echo '<th>Delete</th>';
 			
 		while($rows1=$favorites->fetch_assoc()){
@@ -155,8 +143,12 @@ $read2 = "SELECT * FROM award WHERE uid = '$_SESSION[id]'";
 				$phpdate = strtotime($rows1['date_award']);
 				$myformat = date("m/d/y", $phpdate);
 				echo "<td>".$myformat."</td>";
+				echo '<form action="./EmailCertificate/latex1.php" method="POST" target="_blank">';
+				echo "<td><input type='hidden' name='viewAward' value=".$rows1["id"]."><input type='submit' value='View Award' name='viewawards'></td></form>";
+				echo '<form action="./EmailCertificate/mail1.php" method="POST" target="_blank">';
+				echo "<td><input type='hidden' name='sendAward' value=".$rows1["id"]."><input type='submit' value='Send Award' name='sendawards'></td></form>";
 				echo '<form action = "" method="POST">';
-				echo "<td><input type='hidden' name='deletefav' value=".$rows1["id"]."><input type='submit' value='Delete Favorite' name='delete2'></td></form></tr>";
+				echo "<td><input type='hidden' name='deletefav' value=".$rows1["id"]."><input type='submit' value='Delete Award' name='delete2'></td></form></tr>";
 			}
 			else{
 				echo "<tr><td>".$rows1['fname']."</td>";
@@ -166,8 +158,12 @@ $read2 = "SELECT * FROM award WHERE uid = '$_SESSION[id]'";
 				$phpdate = strtotime($rows1['date_award']);
 				$myformat = date("m/d/y", $phpdate);
 				echo "<td>".$myformat."</td>";
+				echo '<form action="./EmailCertificate/latex1.php" method="POST" target="_blank">';
+				echo "<td><input type='hidden' name='viewAward' value=".$rows1["id"]."><input type='submit' value='View Award' name='viewawards'></td></form>";
+				echo '<form action="./EmailCertificate/mail1.php" method="POST" target="_blank">';
+				echo "<td><input type='hidden' name='sendAward' value=".$rows1["id"]."><input type='submit' value='Send Award' name='sendawards'></td></form>";
 				echo '<form action = "" method="POST">';
-				echo "<td><input type='hidden' name='deletefav' value=".$rows1["id"]."><input type='submit' value='Delete Favorite' name='delete2'></td></form></tr>";
+				echo "<td><input type='hidden' name='deletefav' value=".$rows1["id"]."><input type='submit' value='Delete Award' name='delete2'></td></form></tr>";
 				
 			}
 			}}
@@ -175,13 +171,12 @@ $read2 = "SELECT * FROM award WHERE uid = '$_SESSION[id]'";
 			echo "No awards created.";
 		}
 		
-
-
-?>
-
-
-
-
-
+		unset($_SESSION['awardeeId']);
+		
+		?>
+		
+		
+		
+		
 </body>
 </html>

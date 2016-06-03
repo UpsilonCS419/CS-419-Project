@@ -24,6 +24,7 @@ include"creds.php";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    
 
     <script>
 	    function showCreate(str) {
@@ -114,10 +115,12 @@ include"creds.php";
           
           <form method = "POST" action="">
 					Username: <input type="text" name="usernames" required><br/><br/>
-					Password:  <input type="password" name="passwords" required><br/><br/>
+					Password:  <input type="password" name="passwords" required><br/>
+					<a href="resetuser.php" >Forgot Password</a><br/><br/>
 
 					<input type="submit" class="btn btn-primary btn-lg active" name="login" value="Log In"><br/>
 		</form>
+		
 
       </div>  
 
@@ -126,9 +129,11 @@ include"creds.php";
           
           <form method = "POST" action="">
 					Username: <input type="text" name="adminusernames" required><br/><br/>
-					Password:  <input type="password" name="adminpasswords" required><br/><br/>
+					Password:  <input type="password" name="adminpasswords" required><br/>
+					<a href="resetadmin.php" >Forgot Password</a><br/><br/>
 					<input type="submit" class="btn btn-primary btn-lg active" name="adminlogin" value="Log In"><br/>
 		</form>
+		
 
       </div>          
 
