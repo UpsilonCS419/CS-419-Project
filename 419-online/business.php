@@ -115,10 +115,6 @@ $(function() {
 
 <?PHP
 
-//header('Content-Type: text/csv; charset=utf-8');
-//header('Content-Disposition: attachment; filename=data.csv');
-
-
 if(isset($_POST['filtering'])){
 	
 	if($_POST['datefilter']!=NULL){
@@ -251,22 +247,52 @@ $atitle = NULL;
 
 
 $CatStmt->bind_result($awardid, $afname, $alname, $aemail, $adate, $atime, $uemail, $ufname, $ulname, $usignature, $atitle);
+
+
+$exportFile = fopen("tmp-export.csv", "w") or die("Unable to open file!");
+fwrite($exportFile,"First Name Award,Last Name Award,Type Award,Email Award, Date Award,Time Award,Email User, First Name User,Last Name User\n");
 echo "<div class='row'>";
 	echo '<h2>Award List</h2><table class="table table-bordered table-hover table-striped">';
-	echo '<th>First Name awarded  </th><th>Last Awarded  </th><th>Type Awarded  </th><th>Email Awarded  </th><th>Date Awarded  </th><th>Email of User  </th><th>First Name User  </th><th>last Name User  </th>';
+	echo '<th>First Name Award  </th><th>Last Name Award  </th><th>Type Award  </th><th>Email Award  </th><th>Date Award  </th><th>Email
+User  </th><th>First Name User  </th><th>Last Name User  </th>';
 	while($CatStmt->fetch()){
 			
 		echo '<tr><td>'.$afname.'</td><td>'.$alname.'</td><td>'.$atitle.'</td><td>'.$aemail.'</td><td>'.$adate.'</td><td>'.$uemail.'</td><td>'.$ufname.'</td><td>'.$ulname.'</td></tr>';
-		
-		
-		}
 
+//Write Filter Data to CSV File
+	fwrite($exportFile, "$afname");
+	fwrite($exportFile, ",");
+	fwrite($exportFile, "$alname");
+	fwrite($exportFile, ",");
+	fwrite($exportFile, "$atitle");
+	fwrite($exportFile, ",");
+	fwrite($exportFile, "$aemail");
+	fwrite($exportFile, ",");
+	fwrite($exportFile, "$adate");
+	fwrite($exportFile, ",");
+	fwrite($exportFile, "$atime");
+	fwrite($exportFile, ",");
+	fwrite($exportFile, "$uemail");
+	fwrite($exportFile, ",");
+	fwrite($exportFile, "$ufname");
+	fwrite($exportFile, ",");
+	fwrite($exportFile, "$ulname");
+	fwrite($exportFile, ",");
+	fwrite($exportFile, "\n");
+	}
+
+
+fclose($exportFile);
 echo "</table>";
 echo '</div>';
+//Send Data to a CSV File
+
 $CatStmt->close();
 
 ?>
-
+<form name="Download" action="export.php" >
+       <input type="submit" value="Download" class="submit">
+ </form>
 
 <script src="script.js"></script>
 
