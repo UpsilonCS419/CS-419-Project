@@ -65,7 +65,7 @@ $password; ?>" >
     <input type="text" name="fname" id="fname" value="<?php echo $fname; ?>">
 </p>
 <p>
-    <label for="name">e-mail):</label>
+    <label for="name">Last Name:</label>
     <input type="text" name="lname" id="lname" value="<?php echo $lname; ?>">
 </p>
 <input type="submit" value="Edit" class="submit">
