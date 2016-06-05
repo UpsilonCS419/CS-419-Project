@@ -44,7 +44,7 @@ $sessname = $rows['email'];
 
 <body>
 
-<h1>Upsilon Employee Recognition</h1>
+<h1>Upsilon Employee Recognition: <?php echo $_SESSION['email']; ?></h1>
 <nav id="nav01"></nav>
 
 <div id="main">
@@ -56,14 +56,28 @@ $sessname = $rows['email'];
 //db_connect();
 
 error_reporting(E_ALL);
-$result = mysql_query("SELECT * FROM admin");
+$result = mysql_query("SELECT * FROM admin WHERE id != '$sessid'");
+
+$adminAcct = mysql_query("SELECT * FROM admin WHERE id = '$sessid'");
 
 echo "<h2>Administrators </h2>";
 echo "<table class='table table-bordered table-hover table-striped' >";
 echo "<tr>";
-  echo "<th>Admin Account</th>";
+  echo "<th>Admin Accounts</th>";
 
 echo "</tr>";
+$rows = mysql_fetch_array($adminAcct);
+echo "<tr>";
+   	echo "<td>";
+	echo $rows['email'];
+    echo "</td>";
+	echo "<td>";
+   	echo "<a href=\"edit_admin_form.php?id=".$rows['id']."\">Edit Your Accunt</a>"; 
+	echo "</td>";
+   	echo "<td>";
+   	echo "<a href=\"delete_admins.php?id=".$rows['id']."\">Delete Your Account</a>"; 
+   	echo "</td>";
+  	echo "</tr>";
 while($row = mysql_fetch_array($result))
 {
 	echo "<tr>";

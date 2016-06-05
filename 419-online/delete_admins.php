@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -29,6 +36,16 @@ if (!$result)
 	echo "";
 	echo "<a href=\"admins.php\">Back to Manage Customers</a>";
 
+}
+else if($_SESSION['id']==$id){
+	echo "Your Record has been deleted successfully, please wait while redirecting...";
+	echo '<script>
+				 
+					alert("Your account has been deleted. You will be redirected to the login/sign up page.");
+		
+					</script>';
+	echo "<script type='text/javascript'> document.location = 'login.php'; </script>";
+	
 }
 else
 {

@@ -142,7 +142,7 @@ $sessname = $rows['email'];
 
 <body>
 
-<h1>Upsilon Employee Recognition</h1>
+<h1>Upsilon Employee Recognition: <?php echo $_SESSION['email']; ?></h1>
 <nav id="nav01"></nav>
 
 <div id="main">
