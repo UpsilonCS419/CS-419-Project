@@ -17,13 +17,15 @@ include"creds.php";
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login/Sign Up Page</title>
+    <title>Upsilon Login/Sign Up Page</title>
     
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	
     
 
     <script>
@@ -81,17 +83,19 @@ include"creds.php";
     </script>
 
   </head>
-  <body>
-     
+  <body style="background-color:#F0F8FF">
+	<br/><br/><br/>
+  <div class="col-md-3" id="leftCol" style="background-color:#F0F8FF">
+     <div class="well"> 
       <div data-role="header">
-        <h1>Award List</h1>
+        <h1>LogIn Options</h1>
       </div>
 
       
         
-        <a id="newuser" data-role="button" style="background: red; color: white;">Create A Login</a>
-        <a id="returninguser" data-role="button" style="background: green; color: white;">User Sign In</a>
-        <a id="adminuser" data-role="button" style="background: green; color: white;">Admin Signin</a>
+        <a id="newuser" data-role="button" class="btn btn-sm btn-success">SignUp</a>
+        <a id="returninguser" data-role="button" class="btn btn-sm btn-warning">User Signin</a>
+        <a id="adminuser" data-role="button" class="btn btn-sm btn-danger">Admin Signin</a>
 
         <div id="currentsignin">
           <h1>New User</h1>
@@ -137,7 +141,53 @@ include"creds.php";
 
       </div>          
 
+   </div>
+   </div>
    
+ <div class="container"><font size = "4">
+	<div class="row">
+  			
+      		<div class="col-md-9">
+              	<h1>Welcome to the Upsilon Award Center</h2><hr>
+              
+              	<h2>About Upsilon Award Center</h2>
+              	<p>
+                Hi, welcome to our site called Upsilon Award Center. In case you didn't know, this site is a
+               place where users/employers can recognize the efforts of their employees by awarding them certificates of excellence. 
+			   Users can create employee of the month/year awards. You will be able to view the pdf of the award and can send it out
+			   as an email attachment to the hardworking employee. Users can view all the awards they have given out and have the ability to resend, preview, or 
+			   even remove the award from their file if they so choose.<br/>
+
+              	</p><hr>
+				<p>
+				For Administrators, you have the capabilities to create other users and admins. Admins will have business intelligence on their side,
+				where they are able to view all users and admins in the database. They can filter awards by type of award, users who created the award, and/or
+				filter by date range as well. You can even export this data as an csv excel file. On the dashboard tab, admins can view real time data in 
+				the form of charts and graphs. With all this extra features, you will have the knowledge of Upsilon Award Center at the power of your fingertips. 
+				</p><hr>
+                <p>
+                  <div class="row">
+                  <div class="col-md-9"><img src="employee.jpg" class="img-responsive"></div>
+                    
+                </div>
+
+                </p>
+              
+              	<hr>
+              
+              	<h2>Lets Get Started</h2>
+              	<p>
+                First you must be either logged in as a User or Admin or sign up to access these features. Please sign in or create an account on the left index.
+				
+					
+              	<hr>
+              <h4><br/>Design with help from <a href="http://getbootstrap.com">Bootstrap</a></h4>
+              	<hr>
+              	
+              	
+      		</div> 
+  	</div>
+</div>
 
   </body>
 
