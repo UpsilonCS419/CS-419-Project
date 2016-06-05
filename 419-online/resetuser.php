@@ -49,14 +49,14 @@ if (!$result)
 	//http://www.phponwebsites.com/2014/07/php-mysql-forgot-password-to-mail.html
 	//emailing and password recovery with help from the above site, along with css style of password recovery form
   $to=$rows['email'];
-  $resetURL = 'https://web.engr.oregonstate.edu/~hengs/wiki/docs/cs419/resetpassworduser.php?email=' . $to . '&reset=' . $randomID;
-  $subject='Password Reset for User Admin Award';
-  $message='please click the follow link to reset your password: ' . $resetURL; 
+  $resetURL = 'https://web.engr.oregonstate.edu/~hengs/wiki/docs/cs419git/resetpassworduser.php?email=' . $to . '&reset=' . $randomID;
+  $subject='Password Reset for User Admin Award Site: User Account';
+  $message='please click the follow link to reset your password for your user account: ' . $resetURL; 
   $headers='From:hengs@oregonstate.edu';
   $m=mail($to,$subject,$message,$headers);
   if($m)
   {
-    echo'Check your inbox in mail';
+    echo'Check your email inbox for password reset url link';
   }
   else
   {

@@ -3,8 +3,7 @@
 include("mysqlconnect.php");
 db_connect();
 error_reporting(E_ALL);
-		
-		
+
 $useremail = $_GET['email'];
 $userrandomID = $_GET['reset'];
 $checkreset = mysql_query("SELECT * FROM user WHERE email='$useremail'") or die('No Such Email' . mysql_error());
