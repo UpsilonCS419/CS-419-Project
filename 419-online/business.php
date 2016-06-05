@@ -129,11 +129,7 @@ if(isset($_POST['filtering'])){
 		$rawdate2=htmlentities($seconddate);
 		$date2 = date('Y-m-d', strtotime($rawdate2));
 		
-		echo $date1;
-		echo '<br/>';
-		echo $date2;
-		echo '<br/>';
-	
+		
 	}
 	$userSort = $_POST['userEmails'];
 	
