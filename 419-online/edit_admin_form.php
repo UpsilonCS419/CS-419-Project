@@ -19,7 +19,7 @@
 <h1>Upsilon Employee Recognition</h1>
 <nav id="nav01"></nav>
 <div id="main">
-<a href="url" class="logoutLblPos">sign out</a>
+<a href="logout.php" class="logoutLblPos">sign out</a>
 <?PHP
 include("mysqlconnect.php");
 db_connect();
