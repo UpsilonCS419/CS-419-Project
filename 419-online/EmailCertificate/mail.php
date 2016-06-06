@@ -42,7 +42,7 @@ $trans = array("@@fullName@@" => $awardee, "@@userFullName@@" => $user);
 $body = strtr($bodytext, $trans);
 
 $email = new PHPMailer();
-$email->From      = 'wangxis@oregonstate.edu';
+$email->From      = 'hengs@oregonstate.edu';
 $email->FromName  = $user;
 $email->Subject   = $emailSubject;
 $email->Body      = $body;
