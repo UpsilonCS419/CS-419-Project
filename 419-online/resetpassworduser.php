@@ -33,7 +33,7 @@ if($userrandomID != $idcheck){
 </style>
 </head>
 <body>
-<h1>Type your new password: <?php echo $_GET['email']; ?><h1>
+<h1>User, Type your new password: <?php echo $_GET['email']; ?><h1>
 <form action='#' method='post'>
 <table cellspacing='5' align='center'>
 <tr><td>New Password:</td><td><input type='password' name='userpassword' required/></td></tr>

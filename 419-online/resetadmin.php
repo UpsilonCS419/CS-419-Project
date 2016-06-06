@@ -14,7 +14,7 @@
 </style>
 </head>
 <body>
-<h1>Forgot Password<h1>
+<h1>Admin Forgot Password<h1>
 <form action='#' method='post'>
 <table cellspacing='5' align='center'>
 <tr><td>Email id:</td><td><input type='text' name='mail'required/></td></tr>
@@ -49,7 +49,7 @@ if (!$result)
 	//http://www.phponwebsites.com/2014/07/php-mysql-forgot-password-to-mail.html
 	//emailing and password recovery with help from the above site, along with css style of password recovery form
   $to=$rows['email'];
-  $resetURL = 'https://web.engr.oregonstate.edu/~hengs/wiki/docs/cs419git/resetpasswordadmin.php?email=' . $to . '&reset=' . $randomID;
+  $resetURL = 'https://web.engr.oregonstate.edu/~hengs/wiki/docs/CS419FinalProject/resetpasswordadmin.php?email=' . $to . '&reset=' . $randomID;
   $subject='Password Reset for User Admin Award Site: Admin Account';
   $message='please click the follow link to reset your password for your admin account: ' . $resetURL; 
   $headers='From:hengs@oregonstate.edu';
